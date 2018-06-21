@@ -1,0 +1,61 @@
+﻿  gl_utils.cpp
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(25): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(32): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(475): note: consulte a declaração de 'ctime'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(40): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(56): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(147): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: consulte a declaração de 'sprintf'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(157): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(164): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: consulte a declaração de 'strcpy'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\gl_utils.cpp(172): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(89): note: consulte a declaração de 'strcat'
+  main.cpp
+  maths_funcs.cpp
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(139): warning C4244: 'return': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(258): warning C4244: 'return': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(262): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(442): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(444): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(445): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(446): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(447): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(454): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(456): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(457): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(458): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(459): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(466): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(468): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(469): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(470): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(471): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(514): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(515): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(580): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(581): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(582): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(583): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(588): warning C4244: 'argumento': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(613): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(640): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(650): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(651): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\maths_funcs.cpp(652): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+  Gerando Código...
+  stb_image.c
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\stb_image.c(108): warning C4028: parâmetro formal 2 diferente da declaração
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\stb_image.c(213): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\stb_image.c(274): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\stb_image.c(310): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\stb_image.c(4490): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: consulte a declaração de 'fopen'
+  space_invaders.vcxproj -> C:\Users\julin\Documents\GitHub\opengl-invaders\Space Invaders zip\Debug\space_invaders.exe
