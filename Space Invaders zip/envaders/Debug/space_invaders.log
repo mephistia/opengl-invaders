@@ -1,3 +1,2 @@
-﻿  main.cpp
-c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\main.cpp(244): warning C4244: 'inicializando': conversão de 'double' para 'GLfloat', possível perda de dados
+﻿  Game.cpp
   space_invaders.vcxproj -> C:\Users\julin\Documents\GitHub\opengl-invaders\Space Invaders zip\Debug\space_invaders.exe

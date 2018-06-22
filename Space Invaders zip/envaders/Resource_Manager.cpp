@@ -111,7 +111,7 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
 
 	//unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
 	
-	unsigned char *image = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char *image = stbi_load(file, &width, &height, &nrChannels, 0);
 
 	// Now generate texture
 	texture.Generate(width, height, image);
