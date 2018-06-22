@@ -11,6 +11,8 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Game_Level.h"
+#include "Game_Object.h"
 
 
 // Represents the current state of the game
@@ -30,6 +32,11 @@ public:
 	GameState              State;
 	GLboolean              Keys[1024];
 	GLuint                 Width, Height;
+
+	GameLevel			   Level1;
+	GLuint                 Level;
+
+
 	// Constructor/Destructor
 	Game(GLuint width, GLuint height);
 	~Game();
@@ -39,6 +46,7 @@ public:
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
 	void Render();
+
 };
 
 #endif

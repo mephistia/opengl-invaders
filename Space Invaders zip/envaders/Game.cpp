@@ -26,6 +26,13 @@ Game::~Game()
 	delete Renderer;
 }
 
+// Initial size of the player paddle
+const glm::vec2 PLAYER_SIZE(50, 50);
+// Initial velocity of the player paddle
+const GLfloat PLAYER_VELOCITY(400.0f);
+
+GameObject      *Player;
+
 void Game::Init()
 {
 	// Load shaders
@@ -35,7 +42,20 @@ void Game::Init()
 	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 	// Load textures
-	ResourceManager::LoadTexture("textures/awesomeface.png", GL_TRUE, "face");
+	ResourceManager::LoadTexture("textures/invader1.png", GL_TRUE, "invader1");
+	ResourceManager::LoadTexture("textures/invader2.png", GL_TRUE, "invader2");
+	ResourceManager::LoadTexture("textures/bg.png", GL_FALSE, "bg");
+	ResourceManager::LoadTexture("textures/invader3.png", GL_TRUE, "invader3");
+	ResourceManager::LoadTexture("textures/player.png", true, "player");
+	// Load levels
+	Level1.Load("levels/one.lvl", this->Width, this->Height * 0.5);
+	this->Level = 1;
+
+	glm::vec2 playerPos = glm::vec2(
+		this->Width / 2 - PLAYER_SIZE.x / 2,
+		this->Height - PLAYER_SIZE.y);
+	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"));
+	
 	// Set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 }
@@ -48,10 +68,38 @@ void Game::Update(GLfloat dt)
 
 void Game::ProcessInput(GLfloat dt)
 {
+	if (this->State == GAME_ACTIVE)
+	{
+		GLfloat velocity = PLAYER_VELOCITY * dt; // delta time
 
+		// Move playerboard
+		if (this->Keys[GLFW_KEY_LEFT])
+		{
+			if (Player->Position.x >= 64) // 64
+				Player->Position.x -= velocity;
+		}
+		if (this->Keys[GLFW_KEY_RIGHT])
+		{
+			if (Player->Position.x <= this->Width - Player->Size.x -64)
+				Player->Position.x += velocity;
+		}
+	}
 }
 
 void Game::Render()
 {
-	Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200, 200), glm::vec2(300, 400), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+	if (this->State == GAME_ACTIVE)
+	{
+		// Draw background
+		Renderer->DrawSprite(ResourceManager::GetTexture("bg"),
+			glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f
+		);
+
+		// Draw level
+		Level1.Draw(*Renderer);
+
+		// Draw player
+		Player->Draw(*Renderer);
+
+	}
 }
