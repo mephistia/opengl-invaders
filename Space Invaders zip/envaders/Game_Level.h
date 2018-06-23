@@ -25,6 +25,8 @@ class GameLevel
 public:
 	// Level state
 	std::vector<GameObject> Invaders;
+	GLboolean gameover;
+
 	// Constructor
 	GameLevel() { }
 	// Loads level from file
@@ -38,7 +40,7 @@ public:
 private:
 	// Initialize level from tile data
 	void      init(std::vector<std::vector<GLuint>> tileData, GLuint levelWidth, GLuint levelHeight);
-	GLfloat   time, direction;
+	GLfloat   time, direction, vel;
 };
 
 #endif

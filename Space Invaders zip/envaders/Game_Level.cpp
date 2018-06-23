@@ -16,8 +16,10 @@
 
 void GameLevel::Load(const GLchar *file, GLuint levelWidth, GLuint levelHeight)
 {
-	time = 10;
+	time = 8;
+	vel = 12;
 	direction = 1;
+	gameover = false;
 	// Clear old data
 	this->Invaders.clear();
 	// Load from file
@@ -59,27 +61,34 @@ GLboolean GameLevel::IsCompleted()
 void GameLevel::Move(GLfloat dt)
 {
 	for (GameObject &invader : this->Invaders) {
-		if (!invader.Destroyed) // if the invader exists
-		{
-			if (direction == 1)
-				invader.Position.x += 10.0f * dt; // move right
-			else
-				invader.Position.x -= 10.0f * dt; // move left
+		if (!invader.IsSolid) {
+			if (!invader.Destroyed) // if the invader exists
+			{
+				if (direction == 1)
+					invader.Position.x += vel * dt; // move right
+				else
+					invader.Position.x -= vel * dt; // move left
+			}
 		}
+		
 	}
 
 	// calculate time
 	time -= dt;
-	std::cout << "DeltaTime: " << dt << " ---- Time Countdown: " << time << std::endl;
 
 	if (time <= 0) {
 		for (GameObject &invader : this->Invaders) {
-
-			invader.Position.y += 32;
+			if (!invader.IsSolid) {
+				invader.Position.y += 32;
+				if (invader.Position.y == 586) {
+					gameover = true;
+				}
+			}
+			
 		
 		}
 		direction = -direction;
-		time = 17;
+		time = 14;
 	}
 	
 }
@@ -127,11 +136,18 @@ void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelW
 					sprite = "invader3";	
 					addpoints = 30;
 				}
+
+				else if (invaderData[y][x] == 4)
+				{
+					sprite = "block";
+					
+				}
 			
 
 				glm::vec2 pos(unit_width * x, unit_height * y);
 				glm::vec2 size(unit_width, unit_height);
 				this->Invaders.push_back(GameObject(pos, size, ResourceManager::GetTexture(sprite)));
+				
 			}
 		}
 	}

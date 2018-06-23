@@ -53,6 +53,10 @@ public:
 	GLboolean CheckCollision(Bullet & one, GameObject & two);
 	void DoCollisions();
 
+	// reset
+	void ResetLevel();
+	void ResetPlayer();
+
 };
 
 #endif

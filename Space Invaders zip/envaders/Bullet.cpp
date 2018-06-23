@@ -15,6 +15,8 @@ glm::vec2 Bullet::Move(GLfloat dt, GLfloat playerX)
 	if (!this->CanShoot)
 	{
 		this->Position += this->Velocity * dt;
+		
+
 		// Then check if outside window bounds and if so, reverse velocity and restore at correct position
 		
 		 
@@ -22,8 +24,8 @@ glm::vec2 Bullet::Move(GLfloat dt, GLfloat playerX)
 		{
 			
 			CanShoot = true;
+			Position.y = 600 - 64;
 
-			Position.y = 600;
 			Position.x = playerX;
 		}
 	}

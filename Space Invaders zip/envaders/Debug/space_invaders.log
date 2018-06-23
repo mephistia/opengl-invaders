@@ -1,3 +1,5 @@
-﻿  Game_Level.cpp
-c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game_level.cpp(92): warning C4244: 'inicializando': conversão de 'GLuint' para 'GLfloat', possível perda de dados
+﻿  Game.cpp
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(64): warning C4244: 'argumento': conversão de 'double' para 'GLuint', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(88): warning C4805: '==': mistura não segura de tipo 'GLboolean' e tipo 'bool' em operação
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(199): warning C4244: 'argumento': conversão de 'float' para 'GLuint', possível perda de dados
   space_invaders.vcxproj -> C:\Users\julin\Documents\GitHub\opengl-invaders\Space Invaders zip\Debug\space_invaders.exe

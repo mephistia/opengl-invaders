@@ -35,9 +35,9 @@ const GLfloat PLAYER_VELOCITY(400.0f);
 GameObject      *Player;
 
 // Initial velocity of the bullet
-const glm::vec2 INITIAL_B_VELOCITY(0, -800.0f);
+const glm::vec2 INITIAL_B_VELOCITY(0, -750.0f);
 // Radius of the bullet object
-const GLfloat B_RADIUS = 3.5f;
+const GLfloat B_RADIUS = 10.5f;
 
 Bullet     *B;
 
@@ -58,19 +58,21 @@ void Game::Init()
 	ResourceManager::LoadTexture("textures/invader3.png", GL_TRUE, "invader3");
 	ResourceManager::LoadTexture("textures/bullet.png", GL_TRUE, "bullet");
 	ResourceManager::LoadTexture("textures/player.png", true, "player");
+	ResourceManager::LoadTexture("textures/block.png", GL_TRUE, "block");
+
 	// Load levels
 	Level1.Load("levels/one.lvl", this->Width, this->Height * 0.5);
 	this->Level = 1;
 
 	playerPos = glm::vec2(
 		Width / 2 - PLAYER_SIZE.x / 2,
-		Height - PLAYER_SIZE.y);
+		Height - 2 * PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"));
 	
 	// Set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 
-	glm::vec2 bPos = glm::vec2(playerPos.x + (PLAYER_SIZE.x/2),Height);
+	glm::vec2 bPos = glm::vec2(playerPos.x + (PLAYER_SIZE.x/2), Height - 64);
 	B = new Bullet(bPos, B_RADIUS, INITIAL_B_VELOCITY,
 		ResourceManager::GetTexture("bullet"));
 }
@@ -82,6 +84,11 @@ void Game::Update(GLfloat dt)
 
 	// Move the invaders
 	Level1.Move(dt);
+
+	if (Level1.gameover == true) {
+		this->ResetLevel();
+		this->ResetPlayer();
+	}
 }
 
 
@@ -116,8 +123,12 @@ void Game::ProcessInput(GLfloat dt)
 			}
 				
 		}
-		if (this->Keys[GLFW_KEY_SPACE])
+		if (this->Keys[GLFW_KEY_SPACE]) {
+			
 			B->CanShoot = false;
+
+		}
+	
 	}
 }
 
@@ -137,7 +148,8 @@ void Game::Render()
 		Player->Draw(*Renderer);
 
 		// Draw bullet
-		B->Draw(*Renderer);
+		if (!B->CanShoot)
+			B->Draw(*Renderer);
 
 	}
 }
@@ -173,11 +185,24 @@ void Game::DoCollisions()
 				if (!box.IsSolid) {
 					box.Destroyed = GL_TRUE;
 					B->CanShoot = true;
-					B->Position.y = 600;
+					B->Position.y = 600 - 64;
 					playerPos.x = Player->Position.x + 16;
 					B->Position.x = playerPos.x;
 				}
 			}
 		}
 	}
+}
+
+void Game::ResetLevel()
+{
+	Level1.Load("levels/one.lvl", this->Width, this->Height * 0.5f);
+}
+
+void Game::ResetPlayer()
+{
+	// Reset player/ball stats
+	Player->Size = PLAYER_SIZE;
+	Player->Position = glm::vec2(this->Width / 2 - PLAYER_SIZE.x / 2, this->Height - PLAYER_SIZE.y);
+	B->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2 - B_RADIUS, -(B_RADIUS * 2)), INITIAL_B_VELOCITY);
 }
