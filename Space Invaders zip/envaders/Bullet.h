@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <iostream>
 
 #include "texture.h"
 #include "sprite_renderer.h"
@@ -14,7 +15,7 @@ public:
 
 	GLfloat   Radius;
 	GLboolean CanShoot;
-
+	GLfloat   Cooldown;
 
 	Bullet();
 	Bullet(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite);

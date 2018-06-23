@@ -1,5 +1,6 @@
 ﻿  Game.cpp
-c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(64): warning C4244: 'argumento': conversão de 'double' para 'GLuint', possível perda de dados
-c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(88): warning C4805: '==': mistura não segura de tipo 'GLboolean' e tipo 'bool' em operação
-c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(199): warning C4244: 'argumento': conversão de 'float' para 'GLuint', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(75): warning C4244: 'argumento': conversão de 'double' para 'GLuint', possível perda de dados
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(99): warning C4805: '==': mistura não segura de tipo 'GLboolean' e tipo 'bool' em operação
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(140): warning C4305: '=': truncamento de 'double' para 'GLfloat'
+c:\users\julin\documents\github\opengl-invaders\space invaders zip\envaders\game.cpp(248): warning C4244: 'argumento': conversão de 'float' para 'GLuint', possível perda de dados
   space_invaders.vcxproj -> C:\Users\julin\Documents\GitHub\opengl-invaders\Space Invaders zip\Debug\space_invaders.exe

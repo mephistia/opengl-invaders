@@ -6,29 +6,29 @@ Bullet::Bullet()
 	: GameObject(), Radius(12.5f), CanShoot(true){}
 
 Bullet::Bullet(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite)
-	: GameObject(pos, glm::vec2(radius * 2, radius * 2), sprite, glm::vec3(1.0f), velocity), Radius(radius), CanShoot(true) {}
+	: GameObject(false,pos, glm::vec2(radius * 2, radius * 2), sprite, glm::vec3(1.0f), velocity), Radius(radius), CanShoot(true), Cooldown(1.2) {}
 
 
 glm::vec2 Bullet::Move(GLfloat dt, GLfloat playerX)
 {
-	// If not stuck to player board
-	if (!this->CanShoot)
+	// If bullet is on the screen
+	if (!CanShoot)
 	{
 		this->Position += this->Velocity * dt;
-		
+		Cooldown -= dt;
 
-		// Then check if outside window bounds and if so, reverse velocity and restore at correct position
-		
-		 
-		if (this->Position.y <= 0.0f)
-		{
-			
+
+		if (Position.y <= 0) {
 			CanShoot = true;
-			Position.y = 600 - 64;
+			Position.y = 600 - 74;
+			Position.x = playerX + 16;
 
-			Position.x = playerX;
 		}
 	}
+	if (Cooldown > 0 && CanShoot) {
+		Cooldown -= dt;
+	}
+
 	return this->Position;
 }
 

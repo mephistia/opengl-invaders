@@ -16,6 +16,7 @@
 #include "game_object.h"
 #include "sprite_renderer.h"
 #include "resource_manager.h"
+#include "BulletMonster.h"
 
 
 /// GameLevel holds all Tiles as part of a Breakout level and 

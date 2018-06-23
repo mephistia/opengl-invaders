@@ -20,7 +20,9 @@
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
-	GAME_WIN
+	GAME_WIN,
+	GAME_OVER,
+	GAME_CREDITS
 };
 
 // Game holds all game-related state and functionality.
@@ -48,6 +50,12 @@ public:
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
 	void Render();
+
+	void Active(GLfloat dt);
+	void Menu();
+	void Credits();
+	void GameOver();
+	void GameWin();
 
 	// Collisions
 	GLboolean CheckCollision(Bullet & one, GameObject & two);

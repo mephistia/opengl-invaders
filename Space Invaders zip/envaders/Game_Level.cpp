@@ -102,12 +102,13 @@ void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelW
 	// create different GLchar for each sprite
 	GLchar *sprite;
 	GLuint addpoints;
+	GLboolean solid;
 	// Initialize level tiles based on invaderData		
 	for (GLuint y = 0; y < height; ++y)
 	{
 		for (GLuint x = 0; x < width; ++x)
 		{
-			// Game won't have solid objects.
+			
 			/// Check block type from level data (2D level array)
 			///if (invaderData[y][x] == 1) // Solid
 			///{
@@ -119,34 +120,38 @@ void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelW
 			///}
 			///else 
 
-			if (invaderData[y][x] > 0)	// Non-solid; now determine its color based on level data
+			if (invaderData[y][x] > 0)	// Non-solid
 			{
 				
 				if (invaderData[y][x] == 2) {
 					sprite = "invader2";
+					solid = false;
 					addpoints = 20;
 				}
 				
 				else if (invaderData[y][x] == 1) {
 					sprite = "invader1"; 
+					solid = false;
 					addpoints = 10;
 				}
 				else if (invaderData[y][x] == 3)
 				{
 					sprite = "invader3";	
+					solid = false;
 					addpoints = 30;
 				}
 
 				else if (invaderData[y][x] == 4)
 				{
 					sprite = "block";
+					solid = true;
 					
 				}
 			
 
 				glm::vec2 pos(unit_width * x, unit_height * y);
 				glm::vec2 size(unit_width, unit_height);
-				this->Invaders.push_back(GameObject(pos, size, ResourceManager::GetTexture(sprite)));
+				this->Invaders.push_back(GameObject(solid,pos, size, ResourceManager::GetTexture(sprite)));
 				
 			}
 		}
