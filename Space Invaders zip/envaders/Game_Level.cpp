@@ -10,10 +10,14 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
+
 
 
 void GameLevel::Load(const GLchar *file, GLuint levelWidth, GLuint levelHeight)
 {
+	time = 10;
+	direction = 1;
 	// Clear old data
 	this->Invaders.clear();
 	// Load from file
@@ -52,6 +56,34 @@ GLboolean GameLevel::IsCompleted()
 	return GL_TRUE;
 }
 
+void GameLevel::Move(GLfloat dt)
+{
+	for (GameObject &invader : this->Invaders) {
+		if (!invader.Destroyed) // if the invader exists
+		{
+			if (direction == 1)
+				invader.Position.x += 10.0f * dt; // move right
+			else
+				invader.Position.x -= 10.0f * dt; // move left
+		}
+	}
+
+	// calculate time
+	time -= dt;
+	std::cout << "DeltaTime: " << dt << " ---- Time Countdown: " << time << std::endl;
+
+	if (time <= 0) {
+		for (GameObject &invader : this->Invaders) {
+
+			invader.Position.y += 32;
+		
+		}
+		direction = -direction;
+		time = 17;
+	}
+	
+}
+
 void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelWidth, GLuint levelHeight)
 {
 	// Calculate dimensions
@@ -60,6 +92,7 @@ void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelW
 	GLfloat unit_width = levelWidth / static_cast<GLfloat>(width), unit_height = levelHeight / height;
 	// create different GLchar for each sprite
 	GLchar *sprite;
+	GLuint addpoints;
 	// Initialize level tiles based on invaderData		
 	for (GLuint y = 0; y < height; ++y)
 	{
@@ -82,14 +115,17 @@ void GameLevel::init(std::vector<std::vector<GLuint>> invaderData, GLuint levelW
 				
 				if (invaderData[y][x] == 2) {
 					sprite = "invader2";
+					addpoints = 20;
 				}
 				
 				else if (invaderData[y][x] == 1) {
 					sprite = "invader1"; 
+					addpoints = 10;
 				}
 				else if (invaderData[y][x] == 3)
 				{
-					sprite = "invader3";					
+					sprite = "invader3";	
+					addpoints = 30;
 				}
 			
 

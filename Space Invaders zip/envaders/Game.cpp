@@ -9,6 +9,7 @@
 #include "game.h"
 #include "resource_manager.h"
 #include "sprite_renderer.h"
+#include "Bullet.h"
 
 
 // Game-related State data
@@ -33,6 +34,15 @@ const GLfloat PLAYER_VELOCITY(400.0f);
 
 GameObject      *Player;
 
+// Initial velocity of the bullet
+const glm::vec2 INITIAL_B_VELOCITY(0, -800.0f);
+// Radius of the bullet object
+const GLfloat B_RADIUS = 3.5f;
+
+Bullet     *B;
+
+
+
 void Game::Init()
 {
 	// Load shaders
@@ -46,23 +56,32 @@ void Game::Init()
 	ResourceManager::LoadTexture("textures/invader2.png", GL_TRUE, "invader2");
 	ResourceManager::LoadTexture("textures/bg.png", GL_FALSE, "bg");
 	ResourceManager::LoadTexture("textures/invader3.png", GL_TRUE, "invader3");
+	ResourceManager::LoadTexture("textures/bullet.png", GL_TRUE, "bullet");
 	ResourceManager::LoadTexture("textures/player.png", true, "player");
 	// Load levels
 	Level1.Load("levels/one.lvl", this->Width, this->Height * 0.5);
 	this->Level = 1;
 
-	glm::vec2 playerPos = glm::vec2(
-		this->Width / 2 - PLAYER_SIZE.x / 2,
-		this->Height - PLAYER_SIZE.y);
+	playerPos = glm::vec2(
+		Width / 2 - PLAYER_SIZE.x / 2,
+		Height - PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"));
 	
 	// Set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+
+	glm::vec2 bPos = glm::vec2(playerPos.x + (PLAYER_SIZE.x/2),Height);
+	B = new Bullet(bPos, B_RADIUS, INITIAL_B_VELOCITY,
+		ResourceManager::GetTexture("bullet"));
 }
 
 void Game::Update(GLfloat dt)
 {
+	B->Move(dt,playerPos.x);
+	this->DoCollisions();
 
+	// Move the invaders
+	Level1.Move(dt);
 }
 
 
@@ -76,13 +95,29 @@ void Game::ProcessInput(GLfloat dt)
 		if (this->Keys[GLFW_KEY_LEFT])
 		{
 			if (Player->Position.x >= 64) // 64
+			{
 				Player->Position.x -= velocity;
+				playerPos.x = Player->Position.x + 16;
+
+				if (B->CanShoot)
+					B->Position.x -= velocity;
+			}
+				
 		}
 		if (this->Keys[GLFW_KEY_RIGHT])
 		{
-			if (Player->Position.x <= this->Width - Player->Size.x -64)
+			if (Player->Position.x <= this->Width - Player->Size.x - 64)
+			{
 				Player->Position.x += velocity;
+				playerPos.x = Player->Position.x + 16;
+
+				if (B->CanShoot)
+					B->Position.x += velocity;
+			}
+				
 		}
+		if (this->Keys[GLFW_KEY_SPACE])
+			B->CanShoot = false;
 	}
 }
 
@@ -101,5 +136,48 @@ void Game::Render()
 		// Draw player
 		Player->Draw(*Renderer);
 
+		// Draw bullet
+		B->Draw(*Renderer);
+
+	}
+}
+
+GLboolean Game::CheckCollision(Bullet & one, GameObject & two)
+{
+
+	glm::vec2 center(one.Position + one.Radius);
+	// Calculate AABB info (center, half-extents)
+	glm::vec2 aabb_half_extents(two.Size.x / 2, two.Size.y / 2);
+	glm::vec2 aabb_center(
+		two.Position.x + aabb_half_extents.x,
+		two.Position.y + aabb_half_extents.y
+	);
+	// Get difference vector between both centers
+	glm::vec2 difference = center - aabb_center;
+	glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+	// Add clamped value to AABB_center and we get the value of box closest to circle
+	glm::vec2 closest = aabb_center + clamped;
+	// Retrieve vector between center circle and closest point AABB and check if length <= radius
+	difference = closest - center;
+	return glm::length(difference) < one.Radius;
+}
+
+void Game::DoCollisions()
+{
+	for (GameObject &box : Level1.Invaders)
+	{
+		if (!box.Destroyed)
+		{
+			if (CheckCollision(*B, box))
+			{
+				if (!box.IsSolid) {
+					box.Destroyed = GL_TRUE;
+					B->CanShoot = true;
+					B->Position.y = 600;
+					playerPos.x = Player->Position.x + 16;
+					B->Position.x = playerPos.x;
+				}
+			}
+		}
 	}
 }

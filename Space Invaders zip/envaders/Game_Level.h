@@ -33,9 +33,12 @@ public:
 	void      Draw(SpriteRenderer &renderer);
 	// Check if the level is completed (all invaders are destroyed)
 	GLboolean IsCompleted();
+	// Movement pattern
+	void	  Move(GLfloat dt);
 private:
 	// Initialize level from tile data
 	void      init(std::vector<std::vector<GLuint>> tileData, GLuint levelWidth, GLuint levelHeight);
+	GLfloat   time, direction;
 };
 
 #endif

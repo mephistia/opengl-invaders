@@ -13,6 +13,7 @@
 #include <GLFW/glfw3.h>
 #include "Game_Level.h"
 #include "Game_Object.h"
+#include "Bullet.h"
 
 
 // Represents the current state of the game
@@ -35,6 +36,7 @@ public:
 
 	GameLevel			   Level1;
 	GLuint                 Level;
+	glm::vec2              playerPos;
 
 
 	// Constructor/Destructor
@@ -46,6 +48,10 @@ public:
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
 	void Render();
+
+	// Collisions
+	GLboolean CheckCollision(Bullet & one, GameObject & two);
+	void DoCollisions();
 
 };
 
